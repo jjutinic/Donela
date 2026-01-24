@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CATÁLOGO DONELA</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: radial-gradient(circle at top, #0f0f1a, #000);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem;
+      font-size: 2.5rem;
+      color: #00ffe7;
+      text-shadow: 0 0 15px #00ffe7;
+      animation: glow 2s infinite alternate;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    header span {
+      font-weight: bold;
+    }
+
+    header .icono {
+      font-size: 3rem;
+      animation: giro 4s infinite linear;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00ffe7; }
+      to { text-shadow: 0 0 25px #ff00ff; }
+    }
+
+    @keyframes giro {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .catalogo {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .producto {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid #00ffe7;
+      border-radius: 20px;
+      width: 300px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 0 20px #00ffe7;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .producto:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px #ff00ff;
+    }
+
+    .producto h2 {
+      color: #ff00ff;
+      text-shadow: 0 0 10px #ff00ff;
+    }
+
+    .producto img {
+      width: 100%;
+      border-radius: 15px;
+      margin: 1rem 0;
+      animation: float 4s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    .descripcion {
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.7rem 1.2rem;
+      background: linear-gradient(90deg, #00ffe7, #ff00ff);
+      color: #000;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #111;
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 30px #00ffe7;
+      max-width: 400px;
+      color: #fff;
+    }
+
+    .close {
+      color: #ff00ff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      float: right;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span>DONELA</span>
+    <div class="icono">🍩</div>
+  </header>
+
+  <section class="catalogo">
+    <!-- Producto 1 -->
+    <div class="producto">
+      <h2>Minidonas de Chocolate</h2>
+      <img src="dona5.jpg" alt="Minidonas de Chocolate">
+      <p class="descripcion">Pequeñas delicias bañadas en chocolate brillante, con un toque dulce.</p>
+      <div class="btn" onclick="mostrarDescripcion('chocolate')">Ver más</div>
+    </div>
+
+    <!-- Producto 2 -->
+    <div class="producto">
+      <h2>Minidonas con Salsas</h2>
+      <img src="dona4.jpg" alt="Minidonas con Salsas">
+      <p class="descripcion">Minidonas acompañadas de salsas vibrantes: fresa, chicle, arequipe y leche condensada.</p>
+      <div class="btn" onclick="mostrarDescripcion('salsas')">Ver más</div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="cerrarModal()">&times;</span>
+      <h2 id="modal-title"></h2>
+      <p id="modal-description"></p>
+    </div>
+  </div>
+
+  <script>
+    function mostrarDescripcion(tipo) {
+      const modal = document.getElementById("modal");
+      const title = document.getElementById("modal-title");
+      const description = document.getElementById("modal-description");
+
+      if (tipo === "chocolate") {
+        title.textContent = "Minidonas de Chocolate";
+        description.innerHTML = `
+          Precio: <strong>6.000</strong><br>
+          Colores disponibles: <strong>Negro, Blanco, Rojo, Verde</strong><br><br>
+          Deliciosas minidonas bañadas en chocolate con un estilo futurista y vibrante.
+        `;
+      } else if (tipo === "salsas") {
+        title.textContent = "Minidonas con Salsas";
+        description.innerHTML = `
+          Precio: <strong>5.000</strong><br>
+          Sabores disponibles: <strong>Chicle, Fresa, Arequipe, Leche Condensada</strong><br><br>
+          Minidonas acompañadas de salsas únicas que explotan en sabor y color.
+        `;
+      }
+
+      modal.style.display = "flex";
+    }
+
+    function cerrarModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
