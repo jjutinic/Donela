@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venta de Donas - DONELA</title>
+  <!-- Fuente 3D -->
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #1c1c1c; /* fondo oscuro sutil */
+      color: #f5f5f5;
+    }
+
+    /* Encabezado con fondo negro intenso */
+    header {
+      background-color: #000000; /* negro intenso */
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      position: relative;
+    }
+
+    .logo {
+      display: flex;
+      gap: 5px;
+      font-size: 48px;
+      font-family: 'Bungee Shade', cursive;
+    }
+
+    .logo span { display: inline-block; }
+    .D { color: #ff0000; }
+    .O { font-size: 48px; }
+    .N { color: #ffa500; }
+    .E { color: #008000; }
+    .L { color: #0000ff; }
+    .A { color: #800080; }
+
+    .menu-icon {
+      font-size: 32px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    nav {
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      background-color: #000000; /* menú también negro intenso */
+      border-radius: 8px;
+      display: none;
+      flex-direction: column;
+      padding: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    nav ul li {
+      cursor: pointer;
+      font-weight: 600;
+      color: white;
+      font-family: 'Bungee Shade', cursive;
+    }
+
+    nav ul li:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    /* Carrusel con fondo gris oscuro */
+    .carousel-container {
+      background-color: #000000; /* gris oscuro sutil */
+      padding: 20px;
+      border-radius: 12px;
+      margin: 30px auto;
+      width: 85%;
+      max-width: 650px;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-images img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255,105,180,0.8);
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 50%;
+    }
+
+    .carousel-btn:hover {
+      background-color: rgba(231,84,128,0.9);
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    /* Eslogan */
+    .slogan {
+      margin-top: 20px;
+      font-size: 24px;
+      font-family: 'Times new Roman';
+      color: #0096aa;
+      background-color: #000000; /* negro intenso */
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-shadow: 2px 2px 4px rgba(255,255,255,0.2);
+    }
+
+    /* Icono WhatsApp fijo */
+    .whatsapp-icon {
+      position: fixed;
+      bottom: 30px;
+      right: 20px;
+      width: 65px; /* más grande */
+      height: 65px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      transition: transform 0.2s ease;
+    }
+
+    .whatsapp-icon:hover {
+      transform: scale(1.1);
+    }
+
+    /* Sección de información */
+    footer {
+      background-color: #000000; /* negro intenso */
+      color: #6d0077;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-family: 'Times new Roman';
+    }
+
+    footer p {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <span class="D">D</span>
+      <span class="O">🍩</span>
+      <span class="N">N</span>
+      <span class="E">E</span>
+      <span class="L">L</span>
+      <span class="A">A</span>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <nav id="menu">
+    <ul>
+      <li>Inicio</li>
+      <li><a href="catalogo.html" onclick="seleccionar()">CATÁLOGO</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- Carrusel con fondo oscuro -->
+    <div class="carousel-container">
+      <div class="carousel">
+        <div class="carousel-images" id="carousel-images">
+          <img src="dona1.jpg" alt="Dona 1">
+          <img src="dona2.jpg" alt="Dona 2">
+          <img src="dona3.jpg" alt="Dona 3">
+        </div>
+        <button class="carousel-btn prev" onclick="prevSlide()">❮</button>
+        <button class="carousel-btn next" onclick="nextSlide()">❯</button>
+      </div>
+    </div>
+
+    <!-- Eslogan -->
+    <div class="slogan">¡ EL DETALLE DULCE QUE TODOS QUIEREN !</div>
+  </main>
+
+  <!-- Sección de información -->
+  <footer>
+    <p>Gerente General: Michel Daniela Jutinico</p>
+    <p>Gerente Comercial: Juan Pablo Jutinico</p>
+    <p>Operaria de bajo rango: Paola Andrea Martinez</p>
+    <p>Teléfono de contacto: 3134545815</p>
+  </footer>
+  
+
+  <!-- Icono WhatsApp fijo con imagen oficial -->
+  <a href="https://wa.me/573134545815" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+         alt="WhatsApp" class="whatsapp-icon">
+  </a>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+
+    // Carrusel JS
+    let index = 0;
+    const images = document.getElementById("carousel-images");
+    const total = images.children.length;
+
+    function showSlide() {
+      images.style.transform = `translateX(${-index * 100}%)`;
+    }
+
+    function nextSlide() {
+      index = (index + 1) % total;
+      showSlide();
+    }
+
+    function prevSlide() {
+      index = (index - 1 + total) % total;
+      showSlide();
+    }
+
+    // Auto-play cada 3 segundos
+    setInterval(nextSlide, 3000);
+  </script>
+</body>
+</html>
