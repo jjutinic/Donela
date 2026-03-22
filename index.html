@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DONELA - Donas</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #1c1c1c;
+  color: white;
+}
+
+header {
+  background: black;
+  padding: 15px;
+  text-align: center;
+}
+
+.logo {
+  font-size: 48px;
+  font-family: 'Bungee Shade';
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  width: 110px;   /* ajusta el tamaño */
+  height: auto;
+}
+/* CARRUSEL */
+.carousel {
+  max-width: 600px;
+  margin: 30px auto;
+  overflow: hidden;
+}
+
+.carousel-images {
+  display: flex;
+  transition: 0.5s;
+}
+
+.carousel-images img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* TEXTO */
+.slogan {
+  text-align: center;
+  font-size: 22px;
+  color: #00c3ff;
+  margin: 20px;
+}
+
+/* CATALOGO */
+.catalogo {
+  padding: 20px;
+  text-align: center;
+}
+
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: black;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* 🔥 IMÁGENES UNIFORMES */
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card img:hover {
+  transform: scale(1.05);
+}
+
+.precio {
+  color: #00ffcc;
+  font-weight: bold;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  background: #ff69b4;
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #e75480;
+}
+
+footer {
+  background: black;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+}
+
+/* 🔥 MODAL FUTURISTA */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+  background: #111;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 300px;
+  border: 2px solid #00c3ff;
+  box-shadow: 0 0 20px #00c3ff;
+  animation: aparecer 0.3s ease;
+}
+
+.modal h2 {
+  color: #00c3ff;
+}
+
+.close {
+  margin-top: 15px;
+  padding: 8px 15px;
+  border: none;
+  background: #ff69b4;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.close:hover {
+  background: #e75480;
+}
+
+@keyframes aparecer {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <img src="logo-donela.jpg" alt="Donela Logo" class="logo-img">
+    DONELA
+  </div>
+</header>
+
+<!-- CARRUSEL -->
+<div class="carousel">
+  <div class="carousel-images" id="imgs">
+    <img src="dona-oreo.jpg">
+    <img src="dona1.jpg">
+    <img src="logo-donela.jpg">
+    <img src="dona2.jpg">
+    <img src="dona3.jpg">
+  </div>
+</div>
+
+<div class="slogan">¡EL DETALLE DULCE QUE TODOS QUIEREN!</div>
+
+<!-- CATALOGO -->
+<section class="catalogo">
+  <h2>🍩 Nuestras Donas</h2>
+
+  <div class="productos">
+
+    <div class="card">
+      <img src="dona-fresa.jpeg" onclick="verDescripcion('Dona acompañada de fresa','Deliciosa dona cubierta con chocolate mas toppng')">
+      <h3>Dona Fresa</h3>
+      <p class="precio">$6.000</p>
+      <a class="btn" href="https://wa.me/573134545815?text=Quiero%20una%20dona%20de%20Fresa">Pedir</a>
+    </div>
+
+    <div class="card">
+      <img src="dona-oreo.jpg" onclick="verDescripcion('Dona de oreo','Deliciosa dona cubierta con chocolate, acompañada con trozos de oreo')">
+      <h3>Dona Oreo</h3>
+      <p class="precio">$4.500</p>
+      <a class="btn" href="https://wa.me/573134545815?text=Quiero%20una%20dona%20de%20oreo">Pedir</a>
+    </div>
+
+    <div class="card">
+      <img src="dona-brocheta.jpg" onclick="verDescripcion('Dona tipo brocheta','Dona esponjosa con cobertura de chocolate')">
+      <h3>Dona tipo brocheta</h3>
+      <p class="precio">$4.000</p>
+      <a class="btn" href="https://wa.me/573134545815?text=Quiero%20una%20dona%20brocheta">Pedir</a>
+    </div>
+
+    <div class="card">
+      <img src="dona3.jpg" onclick="verDescripcion('Dona glaseada','Clásica dona suave y deliciosa cubierta con salsas y toppng al gusto')">
+      <h3>Dona Glaseada</h3>
+      <p class="precio">$5.000</p>
+      <a class="btn" href="https://wa.me/573134545815?text=Quiero%20una%20dona%20glaseada">Pedir</a>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="catalogo">
+  <h2>🍩 Donas individuales</h2>
+
+  <div class="slogan">Opción perfecta para tus eventos</div>
+
+  <div class="productos">
+
+    <div class="card">
+      <img src="dona-individual.jpg" onclick="verDescripcion('Donas individuales','Deliciosas donitas cubiertas de chocolate diseñadas a tu gusto y necesidad, perfectas para cualquier ocasión')">
+      <h3>Donas Individuales</h3>
+      <p class="precio">$1.200</p>
+      <a class="btn" href="https://wa.me/573134545815?text=Quiero%20una%20dona%20individual">Pedir</a>
+    </div>
+
+  </div>
+</section>
+
+
+
+<footer>
+  <p>Gerente General: Michel Daniela Jutinico</p>
+  <p>Ingeniero de software: Juan Pablo Jutinico</p>
+  <p>Repartidora: Paola Andrea Martinez</p>
+  <p>Tel: 3134545815</p>
+</footer>
+
+<a href="https://wa.me/573134545815" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="whatsapp">
+</a>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h2 id="titulo"></h2>
+    <p id="texto"></p>
+    <button class="close" onclick="cerrarModal()">Cerrar</button>
+  </div>
+</div>
+
+<script>
+// CARRUSEL
+let i = 0;
+const imgs = document.getElementById("imgs");
+const total = imgs.children.length;
+
+setInterval(() => {
+  i = (i + 1) % total;
+  imgs.style.transform = `translateX(-${i * 100}%)`;
+}, 3000);
+
+// MODAL
+function verDescripcion(nombre, descripcion) {
+  document.getElementById("titulo").innerText = nombre;
+  document.getElementById("texto").innerText = descripcion;
+  document.getElementById("modal").style.display = "flex";
+}
+
+function cerrarModal() {
+  document.getElementById("modal").style.display = "none";
+}
+</script>
+
+</body>
+</html>
